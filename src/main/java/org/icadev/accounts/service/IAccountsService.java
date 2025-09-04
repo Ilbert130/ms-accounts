@@ -15,5 +15,5 @@ public interface IAccountsService {
      * @param mobileNumber - Customer mobile number
      * @return - Customer DTO object
      */
-    CustomerDto fetchCustomer(String mobileNumber);
+    CustomerDto fetchAccount(String mobileNumber);
 }

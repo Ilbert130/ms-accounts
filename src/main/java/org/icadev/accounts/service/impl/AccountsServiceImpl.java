@@ -2,10 +2,13 @@ package org.icadev.accounts.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.icadev.accounts.constants.AccountsConstants;
+import org.icadev.accounts.dto.AccountsDto;
 import org.icadev.accounts.dto.CustomerDto;
 import org.icadev.accounts.entity.Accounts;
 import org.icadev.accounts.entity.Customer;
 import org.icadev.accounts.entity.exception.CustomerAlreadyExistsException;
+import org.icadev.accounts.entity.exception.ResourceNotFoundException;
+import org.icadev.accounts.mapper.AccountsMapper;
 import org.icadev.accounts.mapper.CustomerMapper;
 import org.icadev.accounts.repository.AccountsRepository;
 import org.icadev.accounts.repository.CustomerRepository;
@@ -70,7 +73,17 @@ public class AccountsServiceImpl implements IAccountsService {
      * @return - Customer DTO object
      */
     @Override
-    public CustomerDto fetchCustomer(String mobileNumber) {
-        return null;
+    public CustomerDto fetchAccount(String mobileNumber) {
+        Customer customer = customerRepository.findByMobileNumber(mobileNumber).orElseThrow(() ->
+                new ResourceNotFoundException("Customer", "mobileNumber", mobileNumber)
+        );
+
+        Accounts accounts = accountsRepository.findByCustomerId(customer.getCustomerId()).orElseThrow(() ->
+                new ResourceNotFoundException("Account", "customerId", customer.getCustomerId().toString())
+        );
+
+        CustomerDto customerDto = CustomerMapper.mapToCustomerDto(customer, new CustomerDto());
+        customerDto.setAccountsDto(AccountsMapper.mapToAccountsDto(accounts, new AccountsDto()));
+        return customerDto;
     }
 }
