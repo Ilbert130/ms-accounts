@@ -1,4 +1,4 @@
-package org.icadev.accounts.entity.exception;
+package org.icadev.accounts.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

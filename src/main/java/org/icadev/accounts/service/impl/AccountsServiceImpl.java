@@ -6,8 +6,8 @@ import org.icadev.accounts.dto.AccountsDto;
 import org.icadev.accounts.dto.CustomerDto;
 import org.icadev.accounts.entity.Accounts;
 import org.icadev.accounts.entity.Customer;
-import org.icadev.accounts.entity.exception.CustomerAlreadyExistsException;
-import org.icadev.accounts.entity.exception.ResourceNotFoundException;
+import org.icadev.accounts.exception.CustomerAlreadyExistsException;
+import org.icadev.accounts.exception.ResourceNotFoundException;
 import org.icadev.accounts.mapper.AccountsMapper;
 import org.icadev.accounts.mapper.CustomerMapper;
 import org.icadev.accounts.repository.AccountsRepository;
@@ -15,7 +15,6 @@ import org.icadev.accounts.repository.CustomerRepository;
 import org.icadev.accounts.service.IAccountsService;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.Random;
 

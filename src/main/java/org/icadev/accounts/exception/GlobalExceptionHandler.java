@@ -1,4 +1,4 @@
-package org.icadev.accounts.entity.exception;
+package org.icadev.accounts.exception;
 
 import jakarta.validation.ConstraintViolationException;
 import org.icadev.accounts.dto.ErrorResponseDto;

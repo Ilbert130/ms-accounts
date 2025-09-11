@@ -7,6 +7,7 @@ import lombok.*;
 @Table(name = "accounts")
 @Getter
 @Setter
+//Calling super class toString method
 @ToString(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
