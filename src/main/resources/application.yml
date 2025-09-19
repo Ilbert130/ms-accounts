@@ -14,3 +14,23 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  config:
+    import:
+      - application_qa.yml
+      - application_prod.yml
+  #    To activate a profile, uncomment the line below
+  #    We use the "active" property to activate a profile
+  profiles:
+    active: qa
+
+build:
+  version: "3.0"
+
+accounts:
+  message: "Welcome to the Accounts Microservice local API"
+  contactDetails:
+    name: "Ilbert Castillo"
+    email: "ilbert@gmail.com"
+  onCallSupport:
+    - (849) 555-1212
+    - (849) 555-1213
