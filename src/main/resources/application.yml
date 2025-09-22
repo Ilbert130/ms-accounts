@@ -1,6 +1,10 @@
 server:
   port: 8080
 spring:
+  application:
+    name: "accounts"
+  profiles:
+    active: "prod"
   datasource:
     url: jdbc:h2:mem:accounts
     driverClassName: org.h2.Driver
@@ -14,23 +18,7 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+#    Indicating that we are using the config server as config source
   config:
-    import:
-      - application_qa.yml
-      - application_prod.yml
-  #    To activate a profile, uncomment the line below
-  #    We use the "active" property to activate a profile
-  profiles:
-    active: qa
-
-build:
-  version: "3.0"
-
-accounts:
-  message: "Welcome to the Accounts Microservice local API"
-  contactDetails:
-    name: "Ilbert Castillo"
-    email: "ilbert@gmail.com"
-  onCallSupport:
-    - (849) 555-1212
-    - (849) 555-1213
+#    optional means that if the config server is not available, we can still run the application
+    import: "optional:configserver:http://localhost:8071/"
