@@ -22,3 +22,17 @@ spring:
   config:
 #    optional means that if the config server is not available, we can still run the application
     import: "optional:configserver:http://localhost:8071/"
+
+#    this is the rabbitmq configuration to connect to the rabbitmq server
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
+
+#    this is to expose the actuator endpoints of the application
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
